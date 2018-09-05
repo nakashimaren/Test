@@ -33,14 +33,14 @@ public class PlayerController : MonoBehaviour {
         // ▼▼▼移動処理▼▼▼
         if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)  //  テンキーや3Dスティックの入力（GetAxis）がゼロの時の動作
         {
-            animCon.SetBool("Run", false);  //  Runモーションしない
+           // animCon.SetBool("Run", false);  //  Runモーションしない
         }
 
         else //  テンキーや3Dスティックの入力（GetAxis）がゼロではない時の動作
         {
             var cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;  //  カメラが追従するための動作
             Vector3 direction = cameraForward * Input.GetAxis("Vertical") + Camera.main.transform.right * Input.GetAxis("Horizontal");  //  テンキーや3Dスティックの入力（GetAxis）があるとdirectionに値を返す
-            animCon.SetBool("Run", true);  //  Runモーションする
+            //animCon.SetBool("Run", true);  //  Runモーションする
 
             MukiWoKaeru(direction);  //  向きを変える動作の処理を実行する（後述）
             IdoSuru(direction);  //  移動する動作の処理を実行する（後述）
@@ -48,10 +48,10 @@ public class PlayerController : MonoBehaviour {
 
 
         // ▼▼▼アクション処理▼▼▼
-        animCon.SetBool("Action", Input.GetKey("x") || Input.GetButtonDown("Action1"));  //  キーorボタンを押したらアクションを実行
-        animCon.SetBool("Action2", Input.GetKey("z") || Input.GetButtonDown("Action2"));  //  キーorボタンを押したらアクション2を実行
-        animCon.SetBool("Action3", Input.GetKey("c") || Input.GetButtonDown("Action3"));  //  キーorボタンを押したらアクション3を実行
-        animCon.SetBool("Jump", Input.GetKey("space") || Input.GetButtonDown("Jump"));  //  キーorボタンを押したらジャンプを実行（仮）
+        //animCon.SetBool("Action", Input.GetKey("x") || Input.GetButtonDown("Action1"));  //  キーorボタンを押したらアクションを実行
+        //animCon.SetBool("Action2", Input.GetKey("z") || Input.GetButtonDown("Action2"));  //  キーorボタンを押したらアクション2を実行
+        //animCon.SetBool("Action3", Input.GetKey("c") || Input.GetButtonDown("Action3"));  //  キーorボタンを押したらアクション3を実行
+        //animCon.SetBool("Jump", Input.GetKey("space") || Input.GetButtonDown("Jump"));  //  キーorボタンを押したらジャンプを実行（仮）
     }
 
 

@@ -961,8 +961,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485979264584396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3023021, y: -4.15, z: -10.656487}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.3023021, y: 0.23, z: -0.21}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4311039425317404}
   - {fileID: 4406997225929426}
@@ -1043,7 +1043,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728527956677208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.25, z: -4.36}
+  m_LocalPosition: {x: 0, y: 16, z: -32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4678868591886018}
@@ -1207,8 +1207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268d80ca6db0d9d43bff7822c6441667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idoSpeed: 5
+  _speed: 5
   kaitenSpeed: 120
+  _acceleration: 0.02
 --- !u!137 &137094158757261172
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2191,4 +2192,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}

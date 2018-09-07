@@ -6,13 +6,15 @@ public class PlayerController : MonoBehaviour {
 
     // このスクリプトで使う変数一覧
     private CharacterController charaCon;       // キャラクターコンポーネント用の変数
-    private Animator animCon;  //  アニメーションするための変数
-    public float idoSpeed = 5.0f;         // 移動速度（Public＝インスペクタで調整可能）
+    //private Animator animCon;  //  アニメーションするための変数
+    public float _speed = 5.0f;         // 移動速度（Public＝インスペクタで調整可能）
     public float kaitenSpeed = 1200.0f;   // プレイヤーの回転速度（Public＝インスペクタで調整可能）
 
-    private Vector3 movePower = Vector3.zero;    // キャラクター移動量（未使用）
-    private float jumpPower = 10.0f;        // キャラクター跳躍力（未使用）
-    private const float gravityPower = 9.8f;         // キャラクター重力（未使用）
+    public float _acceleration = 0.1f;   // プレイヤーの回転速度（Public＝インスペクタで調整可能）
+
+    //private Vector3 movePower = Vector3.zero;    // キャラクター移動量（未使用）
+    //private float jumpPower = 10.0f;        // キャラクター跳躍力（未使用）
+    //private const float gravityPower = 9.8f;         // キャラクター重力（未使用）
 
     public void Hit()        // ヒット時のアニメーションイベント（今のところからっぽ。ないとエラーが出る）
     {
@@ -23,7 +25,7 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         charaCon = GetComponent<CharacterController>(); // キャラクターコントローラーのコンポーネントを参照する
-        animCon = GetComponent<Animator>(); // アニメーターのコンポーネントを参照する
+        //animCon = GetComponent<Animator>(); // アニメーターのコンポーネントを参照する
     }
 
 
@@ -38,12 +40,18 @@ public class PlayerController : MonoBehaviour {
 
         else //  テンキーや3Dスティックの入力（GetAxis）がゼロではない時の動作
         {
-            var cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;  //  カメラが追従するための動作
+            var cameraForward = Vector3.Scale(Camera.main.transform.forward ,new Vector3(1, 0, 1)).normalized;  //  カメラが追従するための動作
             Vector3 direction = cameraForward * Input.GetAxis("Vertical") + Camera.main.transform.right * Input.GetAxis("Horizontal");  //  テンキーや3Dスティックの入力（GetAxis）があるとdirectionに値を返す
             //animCon.SetBool("Run", true);  //  Runモーションする
 
             MukiWoKaeru(direction);  //  向きを変える動作の処理を実行する（後述）
             IdoSuru(direction);  //  移動する動作の処理を実行する（後述）
+        }
+
+        //ボタンを押している間加速する
+        if(Input.GetKey("x") || Input.GetButton("Action1"))
+        {
+            _speed += _acceleration;
         }
 
 
@@ -66,7 +74,7 @@ public class PlayerController : MonoBehaviour {
     // ■移動する動作の処理
     void IdoSuru(Vector3 idosuruKyori)
     {
-        charaCon.Move(idosuruKyori * Time.deltaTime * idoSpeed);   // プレイヤーの移動距離は時間×移動スピードの値
+        charaCon.Move(idosuruKyori * Time.deltaTime * _speed);   // プレイヤーの移動距離は時間×移動スピードの値
     }
 }
 

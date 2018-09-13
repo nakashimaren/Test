@@ -9,7 +9,7 @@ public class PlayParticle : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        particlePooler = new ParticlePooler("speed1");
+        particlePooler = new ParticlePooler("speed3");
         Play();
     }
 	
@@ -19,6 +19,6 @@ public class PlayParticle : MonoBehaviour {
     }
     private void Play()
     {
-        ParticleManager.PlayParticle("speed1", new Vector3(0,100.0f,0));
+        ParticleManager.PlayParticle("speed3", new Vector3(0,100.0f,0));
     }
 }

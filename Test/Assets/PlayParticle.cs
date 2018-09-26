@@ -9,16 +9,19 @@ public class PlayParticle : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
         particlePooler = new ParticlePooler("speed3");
-        Play();
+       
+        Play("speed1");
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+       
     }
-    private void Play()
+    private void Play(string name)
     {
-        ParticleManager.PlayParticle("speed3", new Vector3(0,100.0f,0));
+        ParticleManager.PlayParticle(name, new Vector3(0,100.0f,0));
     }
 }

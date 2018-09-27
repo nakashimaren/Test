@@ -26,9 +26,9 @@ public class ParticlePooler : MonoBehaviour
     /// パーティクルを保持しておくリスト
     /// </summary>
     private List<ParticleSystem> particleList = new List<ParticleSystem>();
-    public List<ParticleSystem> ParticleList
+    public List<ParticleSystem> ParticleList()
     {
-        get { return particleList; }
+       return particleList;
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class ParticlePooler : MonoBehaviour
         if (particleOrigin == null)
         {
             string path = "Assets/Resources/Prefab/Particle/"+ particleName+".prefab";
-              particleOrigin = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            particleOrigin = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
             particleOrigin.name = particleName;
         }
     }

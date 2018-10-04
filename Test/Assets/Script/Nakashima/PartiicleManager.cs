@@ -29,5 +29,11 @@ public static class ParticleManager
         }
         pooler.Play(position);
     }
-
+    public static void StopParticle(string particleName)
+    {
+        //リストから指定した名前のプール用オブジェクトを取得
+        ParticlePooler pooler = particlePoolerList.Where(tempPooler => tempPooler.ParticleName == particleName).FirstOrDefault();
+        
+        pooler.Stop();
+    }
 }

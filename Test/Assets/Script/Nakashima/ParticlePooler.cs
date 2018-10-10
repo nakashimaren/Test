@@ -5,18 +5,17 @@ using System.Linq;
 /// <summary>
 ///  パーティクルのプーリング用クラス
 /// </summary>
-public class ParticlePooler : MonoBehaviour
+public class ParticlePooler
 {
-  
     public ParticlePooler(string particleName)
     {
         this.particleName = particleName;
     }
 
+    /// <summary>
     /// パーティクル名
+    /// </summary>
     private string particleName;
-
-
     public string ParticleName
     {
         get { return particleName; }
@@ -26,9 +25,9 @@ public class ParticlePooler : MonoBehaviour
     /// パーティクルを保持しておくリスト
     /// </summary>
     private List<ParticleSystem> particleList = new List<ParticleSystem>();
-    public List<ParticleSystem> ParticleList()
+    public List<ParticleSystem> ParticleList
     {
-       return particleList;
+        get { return particleList; }
     }
 
     /// <summary>
@@ -42,7 +41,7 @@ public class ParticlePooler : MonoBehaviour
     /// <param name="position">Position.</param>
     public void Play(Vector3 position)
     {
-        ParticleSystem particle = GetPlayableParticle();
+        ParticleSystem particle = GetNotPlayableParticle();
         if (particle == null)
         {
             particle = InstantiateParticle();
@@ -50,16 +49,29 @@ public class ParticlePooler : MonoBehaviour
         particle.transform.position = position;
         particle.Play();
     }
+    public void Stop()
+    {
 
+        ParticleSystem particle = GetPlayableParticle();
+        if (particle != null)
+        {
+            particle.Stop();
+        }
+       
+        
+    }
     /// <summary>
     /// 再生可能なパーティクルを取得
     /// </summary>
     /// <returns>再生可能なパーティクル.</returns>
-    private ParticleSystem GetPlayableParticle()
+    private ParticleSystem GetNotPlayableParticle()
     {
         return particleList.Where(particle => !particle.isPlaying).FirstOrDefault();
     }
-
+    private ParticleSystem GetPlayableParticle()
+    {
+        return particleList.Where(particle => particle.isPlaying).FirstOrDefault();
+    }
     /// <summary>
     /// パーティクル生成
     /// </summary>
@@ -80,7 +92,7 @@ public class ParticlePooler : MonoBehaviour
     {
         if (particleOrigin == null)
         {
-            string path = "Assets/Resources/Prefab/Particle/"+ particleName+".prefab";
+            string path = "Assets/Resources/Prefab/Particle/" + particleName + ".prefab";
             particleOrigin = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
             particleOrigin.name = particleName;
         }

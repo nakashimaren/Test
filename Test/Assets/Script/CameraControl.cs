@@ -9,6 +9,8 @@ public class CameraControl : MonoBehaviour {
     public Vector3 _speed;
     public float _accel;
 
+    public GameObject _player;
+
     // Use this for initialization
     void Start () {
         _rot = new Vector3(0, 0, 0);
@@ -16,6 +18,9 @@ public class CameraControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        transform.position = _player.transform.position;
+
         if (Input.GetButton("RButton"))
         {
             Debug.Log("Rpush");

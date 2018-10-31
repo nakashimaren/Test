@@ -27,8 +27,6 @@ public class CoupleBlow : MonoBehaviour
             return;
         }
 
-   
-
 
         //ぶつかった相手からRigitBodyを取り出す
         Rigidbody otherRigitbody = _collider.GetComponent<Rigidbody>();

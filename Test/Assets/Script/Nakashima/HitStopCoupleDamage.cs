@@ -13,9 +13,12 @@ public class HitStopCoupleDamage : MonoBehaviour
     private AudioClip audioClip1;
     private AudioSource audioSource;
     private HitStopSlowAnim hitStopSlowAnim;
+    private bool HitFlag = false;
     private void Start()
     {
         hitStopSlowAnim = GetComponent<HitStopSlowAnim>();
+        
+
     }
     void OnTriggerEnter(Collider col)
     {
@@ -39,10 +42,15 @@ public class HitStopCoupleDamage : MonoBehaviour
             {
                 hitStopSlowAnim.SlowDown();
             }
-
-            //audioSource = gameObject.GetComponent<AudioSource>();
-            //audioSource.clip = audioClip1;
-            //audioSource.Play();
+            HitFlag = true;
+            
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.clip = audioClip1;
+            audioSource.Play();
         }
+    }
+    public bool GetFlag()
+    {
+        return HitFlag;
     }
 }

@@ -20,6 +20,7 @@ public class CoupleBlow : MonoBehaviour
     public string _earthTag;         //除外するタグの名前
     public float _forceHeight;       //吹き飛ばす高さ調整値
     public float _forcePower;        //吹き飛ばす強さ調整値
+    
     private bool HitFlag = false;
     Vector3 toVec;
     Collider _Couplecollider;
@@ -43,7 +44,7 @@ public class CoupleBlow : MonoBehaviour
 
                     _CoupleRigitbody.AddForce(toVec * _forcePower, ForceMode.Impulse);
 
-                    HitFlag = false;
+                    
 
                     isSlowDown = false;
                 }
@@ -94,6 +95,7 @@ public class CoupleBlow : MonoBehaviour
 
         return Vector3.Normalize(toVec - fromVec);
     }
+
 }
 
 

@@ -40,13 +40,9 @@ public class CoupleBlow : MonoBehaviour
                 elapsedTime += Time.unscaledDeltaTime;
                 if (elapsedTime >= slowTime)
                 {
-
-
                     _CoupleRigitbody.AddForce(toVec * _forcePower, ForceMode.Impulse);
-
-                    
-
                     isSlowDown = false;
+                    HitFlag = false;
                 }
             }
 

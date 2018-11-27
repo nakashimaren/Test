@@ -53,4 +53,9 @@ public class HitStopCoupleDamage : MonoBehaviour
     {
         return HitFlag;
     }
+    public void SetFlag(bool flag)
+    {
+        HitFlag = flag;
+    }
+
 }

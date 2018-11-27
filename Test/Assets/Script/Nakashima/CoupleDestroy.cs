@@ -23,11 +23,12 @@ public class CoupleDestroy : MonoBehaviour {
         {
             if (hitStopCoupleDamage.GetFlag())
             {
-                if (!(GetComponent<Renderer>().isVisible))
-                {
-                    //ふっとばしパーティクル再生
-                }
+                //if (!(GetComponent<Renderer>().isVisible))
+                //{
+                //    //ふっとばしパーティクル再生
+                //}
                 yield return new WaitForSeconds(span);
+                hitStopCoupleDamage.SetFlag(false);
                 Destroy(transform.parent.gameObject);
 
             }

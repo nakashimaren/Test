@@ -6,8 +6,9 @@ public class CoupleDestroy : MonoBehaviour {
 
     HitStopCoupleDamage hitStopCoupleDamage;
     float span = 3.0f;
-	// Use this for initialization
-	void Start () {
+    
+    // Use this for initialization
+    void Start () {
         hitStopCoupleDamage = GetComponent<HitStopCoupleDamage>();
         StartCoroutine("Time");
     }
@@ -18,10 +19,14 @@ public class CoupleDestroy : MonoBehaviour {
 	}
     private IEnumerator Time()
     {
-        while(true)
+        while (true)
         {
             if (hitStopCoupleDamage.GetFlag())
             {
+                if (!(GetComponent<Renderer>().isVisible))
+                {
+                    //ふっとばしパーティクル再生
+                }
                 yield return new WaitForSeconds(span);
                 Destroy(transform.parent.gameObject);
 
@@ -29,6 +34,7 @@ public class CoupleDestroy : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
 
-        
+
     }
 }
+

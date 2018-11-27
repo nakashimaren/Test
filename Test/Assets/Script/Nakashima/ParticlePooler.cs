@@ -99,11 +99,12 @@ public class ParticlePooler
     }
 
     /// <summary>
-    /// 破棄時処理
+    /// 破棄時処理l
     /// </summary>
     private void Clean()
     {
         particleList.Clear();
+       
         particleList = null;
         particleOrigin = null;
     }

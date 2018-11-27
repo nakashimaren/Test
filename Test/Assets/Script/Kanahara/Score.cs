@@ -14,15 +14,23 @@ public class Score : MonoBehaviour {
     public Image num3;
     public Image num4;
 
+    //
+    private HitStopCoupleDamage _hitStopCoupleDamage;
+
     public Sprite[] number;
 
     // Use this for initialization
     void Start () {
-		
+        _hitStopCoupleDamage = GetComponent<HitStopCoupleDamage>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (_hitStopCoupleDamage.GetFlag())
+        {
+            Add(20);
+        }
 
         int score = _score;
 
@@ -44,5 +52,10 @@ public class Score : MonoBehaviour {
         num3.sprite = number[val3];
         num4.sprite = number[val4];
 
+    }
+
+    public void Add(int val)
+    {
+        _score += val;
     }
 }

@@ -35,13 +35,14 @@ public class EnemyPop : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 
 
 	}
 
     //カップル生成
-    void Pop()
+    public void Pop()
     {
         //popする場所の決定
         int num = Random.Range(0, _positions.Count);

@@ -27,8 +27,8 @@ public class CoupleDestroy : MonoBehaviour {
             {
                 //if (!(GetComponent<Renderer>().isVisible))
                 //{
-                //    //ふっとばしパーティクル再生
-                //}
+                     EffekseerHandle handle = EffekseerSystem.PlayEffect("Burst", transform.position);
+               // }
                 yield return new WaitForSeconds(span);
                 hitStopCoupleDamage.SetFlag(false);
                 Destroy(transform.parent.gameObject);

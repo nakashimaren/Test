@@ -5,11 +5,13 @@ using UnityEngine;
 public class CoupleDestroy : MonoBehaviour {
 
     HitStopCoupleDamage hitStopCoupleDamage;
+    EnemyPop enemyPop;
     float span = 3.0f;
     
     // Use this for initialization
     void Start () {
         hitStopCoupleDamage = GetComponent<HitStopCoupleDamage>();
+        enemyPop = GetComponent<EnemyPop>();
         StartCoroutine("Time");
     }
 	
@@ -30,6 +32,7 @@ public class CoupleDestroy : MonoBehaviour {
                 yield return new WaitForSeconds(span);
                 hitStopCoupleDamage.SetFlag(false);
                 Destroy(transform.parent.gameObject);
+                enemyPop.Pop();
 
             }
             yield return new WaitForSeconds(0.1f);

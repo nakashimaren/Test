@@ -62,7 +62,6 @@ public class TitleSystem : MonoBehaviour {
         if (Input.GetKeyDown("joystick button 9"))
         {
             SceneManager.LoadScene("GameMain");
-
         }
     }
 }

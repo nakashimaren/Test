@@ -2742,7 +2742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dab69524719deb4fbe78d6a059a2831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parent: {fileID: 0}
 --- !u!114 &114439831425083414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2778,8 +2777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f23a3a8705e4d458245904d69e2576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePrefab: {fileID: 1902325013786086, guid: fbdb0b280789440678aa36806de97767,
-    type: 2}
+  damagePrefab: {fileID: 0}
   timeManager: {fileID: 0}
   audioClip1: {fileID: 8300000, guid: 1a06867ce965f394a83cfc12b25d064c, type: 3}
 --- !u!114 &114561118325728234
@@ -2793,8 +2791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f23a3a8705e4d458245904d69e2576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePrefab: {fileID: 1902325013786086, guid: fbdb0b280789440678aa36806de97767,
-    type: 2}
+  damagePrefab: {fileID: 0}
   timeManager: {fileID: 0}
   audioClip1: {fileID: 8300000, guid: 1a06867ce965f394a83cfc12b25d064c, type: 3}
 --- !u!114 &114601253949029878

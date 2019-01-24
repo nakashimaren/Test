@@ -15,7 +15,7 @@ public class Test : MonoBehaviour {
 	void Update () {
         if(enable)
         {
-            handle =  EffekseerSystem.PlayEffect("Burst2", new Vector3(0, 0, 0));
+            handle =  EffekseerSystem.PlayEffect("Burst2", new Vector3(0, pos, 0));
 
             enable = false;
         }

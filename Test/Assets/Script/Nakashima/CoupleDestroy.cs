@@ -32,6 +32,7 @@ public class CoupleDestroy : MonoBehaviour {
  
                 yield return new WaitForSeconds(span);
                 hitStopCoupleDamage.SetFlag(false);
+                
                 Destroy(transform.parent.gameObject);
                 enemyPop.Pop();
 

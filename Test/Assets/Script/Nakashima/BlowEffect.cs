@@ -9,21 +9,26 @@ public class BlowEffect : MonoBehaviour
     bool Hit = false;
     EffekseerHandle Handle;
     EffekseerEmitter Burst;
+    public CameraShake shake;
+
     // Use this for initialization
     void Start()
     {
         Burst = new EffekseerEmitter();
+        GameObject temp = GameObject.Find("Main Camera");
+        shake = temp.GetComponent<CameraShake>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         if (Hit)
         {
-            EffekseerSystem.PlayEffect("Burst2", HitPos);
-
-
-             Hit = false;
+            //画面揺らし
+            shake.Shake(0.25f, 0.1f);
+            ParticleManager.PlayParticle("Blow System", new Vector3(HitPos.x, HitPos.y + 9, HitPos.z));
+            ParticleManager.PlayParticle("Blow System2", new Vector3(HitPos.x, HitPos.y + 9 , HitPos.z));
+            Hit = false;
         }
     }
     void OnTriggerEnter(Collider _collider)

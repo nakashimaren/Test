@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     private CharacterController charaCon;       // キャラクターコンポーネント用の変数
     //private Animator animCon;  //  アニメーションするための変数
     public float _speed = 5.0f;         // 移動速度（Public＝インスペクタで調整可能）
+    private float _lowerSpeed;      //下限速度
     public float kaitenSpeed = 1200.0f;   // プレイヤーの回転速度（Public＝インスペクタで調整可能）
 
     public float _acceleration = 0.1f;   // プレイヤーの回転速度（Public＝インスペクタで調整可能）
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour {
     {
         charaCon = GetComponent<CharacterController>(); // キャラクターコントローラーのコンポーネントを参照する
         //animCon = GetComponent<Animator>(); // アニメーターのコンポーネントを参照する
+
+        //下限速度の初期化
+        _lowerSpeed = _speed;
     }
 
 
@@ -49,9 +53,18 @@ public class PlayerController : MonoBehaviour {
         }
 
         //ボタンを押している間加速する
-        if(Input.GetKey("x") || Input.GetButton("Action1"))
+        if(Input.GetButton("Action1") || Input.GetKey(KeyCode.Space))
         {
             _speed += _acceleration;
+        }
+        else
+        {
+            _speed -= _acceleration;
+
+            if(_lowerSpeed >= _speed)
+            {
+                _speed = _lowerSpeed;
+            }
         }
 
 

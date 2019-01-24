@@ -12,15 +12,25 @@ public class PlayParticle : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Player = GameObject.Find("Player");
-        PlayerScript = Player.GetComponent<PlayerController>();
+      //  PlayerScript = Player.GetComponent<PlayerController>();
         spped1 = new ParticlePooler("speed1");
-
+        foreach (Transform transform in Player.transform)
+        {
+            // Transformからゲームオブジェクト取得・削除
+            if(null != transform.GetComponent<PlayerController>())
+            {
+                Player = transform.gameObject;
+                PlayerScript = Player.GetComponent<PlayerController>();
+            }
+      
+        }
 
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+
         if (PlayerScript._speed <= 5 && nowSpeedEffect != "speed1")
         {
             ParticleManager.PlayParticle("speed1", new Vector3(0, 500.0f, 0));

@@ -9,16 +9,16 @@ public class HitStopCoupleDamage : MonoBehaviour
     private GameObject damagePrefab;
     [SerializeField]
     private TimeManager timeManager;
-    [SerializeField]
-    private AudioClip audioClip1;
+    
+    public AudioClip audioClip1;
     private AudioSource audioSource;
     private HitStopSlowAnim hitStopSlowAnim;
     private bool HitFlag = false;
     private void Start()
     {
         hitStopSlowAnim = GetComponent<HitStopSlowAnim>();
-        
-
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = audioClip1;
     }
     void OnTriggerEnter(Collider col)
     {
@@ -43,9 +43,7 @@ public class HitStopCoupleDamage : MonoBehaviour
                 hitStopSlowAnim.SlowDown();
             }
             HitFlag = true;
-            
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.clip = audioClip1;
+           
             audioSource.Play();
         }
     }

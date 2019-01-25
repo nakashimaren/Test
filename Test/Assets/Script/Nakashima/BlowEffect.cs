@@ -11,13 +11,18 @@ public class BlowEffect : MonoBehaviour
     EffekseerEmitter Burst;
     public CameraShake shake;
     Score score;
+    AudioSource audioSource;
+    public AudioClip HitS;
     // Use this for initialization
     void Start()
     {
         Burst = new EffekseerEmitter();
         GameObject temp = GameObject.Find("Main Camera");
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = HitS;
         shake = temp.GetComponent<CameraShake>();
         score = GameObject.Find("Score").GetComponent<Score>();
+      
     }
     
     // Update is called once per frame
@@ -29,7 +34,8 @@ public class BlowEffect : MonoBehaviour
             shake.Shake(0.25f, 0.1f);
             ParticleManager.PlayParticle("Blow System", new Vector3(HitPos.x, HitPos.y + 9, HitPos.z));
             ParticleManager.PlayParticle("Blow System2", new Vector3(HitPos.x, HitPos.y + 9 , HitPos.z));
-            Hit = false;
+            audioSource.Play();
+             Hit = false;
             score.Add(200);
         }
     }
@@ -38,7 +44,7 @@ public class BlowEffect : MonoBehaviour
         if (_collider.tag == "Couple")
         {
             HitPos = _collider.transform.position;
-            Hit = true;
+             Hit = true;
         }
 
     }
